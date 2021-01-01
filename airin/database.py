@@ -113,7 +113,7 @@ class Database(object):
 
     def clean(self, table_name: str = settings.database.temp_table_name) -> None:
         if self.check_table(table_name) > 0:
-            self.drop_table(table_name)
+            self.exec(f"delete from {table_name}")
 
     def close(self):
         logger.log("DEBUG", "Close database connect")
